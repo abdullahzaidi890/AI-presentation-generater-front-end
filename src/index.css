@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :focus-visible { outline: 2px solid #4f46e5; outline-offset: 2px; }
+  button, a, input, select, textarea { transition: background-color .15s, border-color .15s, color .15s, box-shadow .15s; }
+  body { font-family: Inter, 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+}
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-gradient-to-r from-brand-600 to-violet-600 text-white shadow-md shadow-brand-600/25 hover:from-brand-700 hover:to-violet-700 hover:shadow-lg; }
+  .btn-secondary { @apply btn border border-slate-300 bg-white text-slate-800 shadow-sm hover:border-slate-400 hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .input { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-500 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 disabled:bg-slate-100; }
+  .label { @apply mb-1.5 block text-sm font-medium text-slate-800; }
+  .card { @apply rounded-2xl border border-slate-200/80 bg-white shadow-sm; }
+  .card-hover { @apply transition duration-200 hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-600/10; }
+  .err { @apply mt-1 text-sm text-red-700; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-slide { break-after: page; page-break-after: always; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
+  @page { size: 13.333in 7.5in; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
